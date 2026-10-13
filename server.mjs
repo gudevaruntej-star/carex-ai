@@ -30,7 +30,9 @@ const upload = multer({
 });
 
 app.use(express.json({ limit: '2mb' }));
-app.use(express.static(__dirname));
+app.get('/', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'carex.html'));
+});
 
 function getClient() {
   const key = process.env.GEMINI_API_KEY;
